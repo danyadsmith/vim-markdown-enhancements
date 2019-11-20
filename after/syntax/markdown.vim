@@ -1,4 +1,3 @@
-
 " multi-markdown
 "
 " Syntax Guide:
@@ -27,8 +26,8 @@ hi! link mmdFootnoteMarker     Constant
 " CriticMarkup
 " reference: http://criticmarkup.com
 syn region mdCriticAddition matchgroup=mdCriticAdd start=/{++/ end=/++}/ contains=mdCriticAddStartMark, mdCriticAddEndMark concealends
-syn match  mdCriticAddStartMark /{++/ contained conceal
-syn match  mdCriticAddEndMark /++}/ contained conceal
+syn match  mdCriticAddStartMark /{++/ contained containedin=mdCriticAddition  conceal
+syn match  mdCriticAddEndMark /++}/ contained containedin=mdCriticAddition conceal
 syn region mdCriticDeletion matchgroup=mdCriticDel start=/{--/ end=/--}/ contains=mdCriticDelStartMark,mdCriticDelEndMark concealends
 syn match  mdCriticDelStartMark /{--/ contained conceal
 syn match  mdCriticDelEndMark /--}/ contained conceal
@@ -37,20 +36,22 @@ syn match  mdCriticSubStartMark /{\~\~/ contained containedin=mdCriticSubRemove 
 syn region mdCriticSubstitute start=/\~>/ end=/\~\~}/ keepend
 syn match  mdCriticSubTransMark /\~>/ contained containedin=mdCriticSubstitute conceal
 syn match  mdCriticSubEndMark /\~\~}/ contained containedin=mdCriticSubstitute conceal
-syn region mdCriticComment matchgroup=mdCriticExtra start=/{>>/ end=/<<}/ concealends
+syn region mdCriticComment matchgroup=mdCriticCom start=/{>>/ end=/<<}/ contains=mdCriticCommentStartMark, mdCriticCommentEndMark concealends
+syn match  mdCriticCommentStartMark /{>>/ contained containedin=mdCriticComment conceal
+syn match  mdCriticCommentEndMark /<<}/ contained containedin=mdCriticComment conceal
 syn region mdCriticHighlight matchgroup=mdCriticExtra start=/{==/ end=/==}/ concealends
 
-hi! link mdCriticAdd              DiffText
-hi! link mdCriticAddition         DiffAdd
-hi! link mdCriticDel              DiffText
-hi! link mdCriticDeletion         DiffDelete
-hi! link mdCriticSubRemove        DiffDelete
-hi! link mdCriticSubstitute       DiffAdd
-hi! link mdCriticSubStartMark     DiffText
-hi! link mdCriticSubTransMark     DiffText
-hi! link mdCriticSubEndMark       DiffText
-hi! link mdCriticComment          Comment
-hi! link mdCriticHighlight        Todo
-hi! link mdCriticExtra            DiffText
+"hi! link mdCriticAdd              DiffText
+"hi! link mdCriticAddition         DiffAdd
+"hi! link mdCriticDel              DiffText
+"hi! link mdCriticDeletion         DiffDelete
+"hi! link mdCriticSubRemove        DiffDelete
+"hi! link mdCriticSubstitute       DiffAdd
+"hi! link mdCriticSubStartMark     DiffText
+"hi! link mdCriticSubTransMark     DiffText
+"hi! link mdCriticSubEndMark       DiffText
+"hi! link mdCriticComment          Comment
+"hi! link mdCriticHighlight        Todo
+"hi! link mdCriticExtra            DiffText
 
 
